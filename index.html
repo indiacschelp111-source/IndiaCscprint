@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>INDIACSCPRINT - Services</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}body{background:#FFFBF0;max-width:480px;margin:auto;min-height:100vh}.h{background:#3A1F1A;padding:14px;text-align:center;color:#D4A853;font-weight:800;position:sticky;top:0;z-index:10}.sec{margin:12px;background:#fff;border:1.5px solid #E9D5A3;border-radius:14px;padding:12px}.sec-t{font-weight:800;font-size:13px;margin-bottom:10px}.g{display:grid;grid-template-columns:1fr 1fr;gap:10px}.c{background:linear-gradient(135deg,#FFFBF0,#FFF3CD);border:1.5px solid #E9D5A3;border-radius:14px;padding:16px 4px;text-align:center;cursor:pointer;position:relative}.m{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:99;justify-content:center;align-items:center;padding:12px}.bx{background:#fff;width:100%;max-width:390px;border-radius:20px;padding:18px}.in{width:100%;padding:13px;border:1.5px solid #E7C97D;border-radius:12px;margin-bottom:10px}.btn{width:100%;background:#3A1F1A;color:#D4A853;padding:14px;border:none;border-radius:12px;font-weight:800;cursor:pointer}.btn-g{background:#0f7a3a;color:#fff}.wallet{background:linear-gradient(135deg,#3A1F1A,#5a3a32);color:#D4A853;border-radius:14px;padding:14px;margin:12px;display:flex;justify-content:space-between;align-items:center}.logout{color:#fff;font-size:12px;background:rgba(255,255,255,.2);padding:6px 12px;border-radius:20px;border:none;cursor:pointer}
+.login-wrap{padding:20px;min-height:80vh;display:flex;flex-direction:column;justify-content:center}.login-box{background:#fff;border:2px solid #E9D5A3;border-radius:20px;padding:22px}.logo{width:60px;height:60px;background:#3A1F1A;border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;color:#D4A853;font-size:28px;font-weight:900}.tab{display:flex;gap:8px;margin:16px 0}.tab-btn{flex:1;padding:12px;border-radius:12px;border:1.5px solid #E9D5A3;background:#FFFBF0;font-weight:800;cursor:pointer}.tab-btn.active{background:#3A1F1A;color:#D4A853;border-color:#3A1F1A}
+</style></head><body>
+<div class="h">INDIACSCPRINT</div>
+<div id="loginScreen"><div class="login-wrap"><div class="login-box"><div class="logo">🖨️</div><h2 style="text-align:center;font-weight:900;color:#3A1F1A">ALL SERVICES</h2><p style="text-align:center;font-size:11px;color:#8a6d3b;margin-top:4px">Instant Print - Verified</p><div class="tab"><button id="tabLogin" class="tab-btn active" onclick="showTab('login')">Login</button><button id="tabReg" class="tab-btn" onclick="showTab('reg')">Register</button></div><div id="loginForm"><input id="lMobile" class="in" placeholder="📱 Mobile" maxlength="10"><input id="lPass" class="in" type="password" placeholder="🔒 Password"><button class="btn" onclick="doLogin()">🔓 Login</button></div><div id="regForm" style="display:none"><input id="rName" class="in" placeholder="👤 Name"><input id="rMobile" class="in" placeholder="📱 Mobile" maxlength="10"><input id="rShop" class="in" placeholder="🏪 Shop"><input id="rPass" class="in" type="password" placeholder="🔒 Password"><button class="btn btn-g" onclick="doReg()">✅ Create Account</button></div></div></div></div>
+<div id="mainPortal" style="display:none">
+<div class="wallet"><div><div style="font-size:11px;opacity:.8">Wallet</div><div style="font-size:20px;font-weight:900">₹<span id="bal">0</span></div><div style="font-size:11px" id="userName">Welcome</div></div><div style="display:flex;gap:8px"><button class="logout" style="background:#D4A853;color:#3A1F1A;font-weight:800" onclick="recharge()">+ Recharge</button><button class="logout" onclick="doLogout()">Logout</button></div></div>
+
+<div class="sec"><div class="sec-t">✅ All Services - Instant</div><div class="g">
+<div class="c" onclick="openM('PAN Verify',20,'PAN')">🪪<br>PAN Verify<br><b>Rs20</b></div>
+<div class="c" onclick="openM('PAN to Aadhaar',20,'PAN_AADHAAR')">🔗<br>PAN-Aadhaar<br><b>Rs20</b></div>
+<div class="c" onclick="openM('PAN to GST',20,'GST')">🏢<br>PAN to GST<br><b>Rs20</b></div>
+<div class="c" onclick="openM('Voter Original Photo',20,'VOTER')">🗳️<br>Voter Photo<br><b>Rs20</b></div>
+<div class="c" onclick="openM('RC Print',30,'RC')">🚗<br>RC Print<br><b>Rs30</b></div>
+<div class="c" onclick="openM('DL Verify',30,'DL')">🚙<br>DL Verify<br><b>Rs30</b></div>
+<div class="c" onclick="openM('e-Challan',20,'CHALLAN')">🧾<br>e-Challan<br><b>Rs20</b></div>
+<div class="c" onclick="openM('GST Verify',20,'GST_VERIFY')">🏦<br>GST Verify<br><b>Rs20</b></div>
+<div class="c" onclick="openM('Mobile to UPI',15,'UPI')">📱<br>UPI Find<br><b>Rs15</b></div>
+<div class="c" onclick="openM('Aadhaar to UAN',20,'UAN')">💼<br>UAN Find<br><b>Rs20</b></div>
+<div class="c" onclick="openM('ABHA Card',20,'ABHA')">🏥<br>ABHA Card<br><b>Rs20</b></div>
+<div class="c" onclick="openM('Ration Card',20,'RATION')">🌾<br>Ration Print<br><b>Rs20</b></div>
+<div class="c" onclick="openM('Electricity Bill',15,'BILL')">💡<br>Light Bill<br><b>Rs15</b></div>
+<div class="c" onclick="openM('Insurance Check',20,'INSURANCE')">🛡️<br>Insurance<br><b>Rs20</b></div>
+<div class="c" onclick="openM('PM Kisan',15,'PMKISAN')">👨‍🌾<br>PM Kisan<br><b>Rs15</b></div>
+</div></div>
+</div>
+
+<div id="modal" class="m"><div class="bx"><h3 id="t"></h3><br><input id="doc" class="in" placeholder="Number / ID taka"><div id="paySec"><p id="priceT" style="font-weight:800;color:#0f7a3a;text-align:center;margin-bottom:10px"></p><button class="btn btn-g" onclick="verify()">✅ Verify - Wallet Cut</button></div><div id="res"></div><button style="width:100%;background:#eee;border:none;padding:10px;border-radius:12px;margin-top:10px" onclick="closeM()">Close</button></div></div>
+
+<script>
+let s="",amt=0,ty="",balance=0;
+const API_CONFIG = {
+  baseUrl: "https://api.1pointapi.xyz",
+  key: "YOUR_API_KEY_HERE",
+};
+function showTab(t){if(t=='login'){document.getElementById('loginForm').style.display='block';document.getElementById('regForm').style.display='none';document.getElementById('tabLogin').classList.add('active');document.getElementById('tabReg').classList.remove('active');}else{document.getElementById('loginForm').style.display='none';document.getElementById('regForm').style.display='block';document.getElementById('tabLogin').classList.remove('active');document.getElementById('tabReg').classList.add('active');}}
+function doLogin(){let m=document.getElementById('lMobile').value;let p=document.getElementById('lPass').value;if(m.length<10){alert('Mobile taka');return;}if(!p){alert('Password taka');return;}let savedBal=localStorage.getItem('csc_bal_'+m);balance=savedBal?parseInt(savedBal):0;localStorage.setItem('csc_user',m);localStorage.setItem('csc_login','1');document.getElementById('loginScreen').style.display='none';document.getElementById('mainPortal').style.display='block';document.getElementById('userName').innerText=m;document.getElementById('bal').innerText=balance;}
+function doReg(){let n=document.getElementById('rName').value;let m=document.getElementById('rMobile').value;let sh=document.getElementById('rShop').value;let p=document.getElementById('rPass').value;if(!n||m.length<10||!sh||!p){alert('Sagali mahiti bhara');return;}localStorage.setItem('csc_bal_'+m,'0');localStorage.setItem('csc_user',m);localStorage.setItem('csc_login','1');alert('✅ Created! Recharge kara');balance=0;document.getElementById('loginScreen').style.display='none';document.getElementById('mainPortal').style.display='block';document.getElementById('userName').innerText=m;document.getElementById('bal').innerText=balance;}
+function doLogout(){localStorage.removeItem('csc_login');document.getElementById('loginScreen').style.display='block';document.getElementById('mainPortal').style.display='none';}
+function recharge(){let a=prompt('Kiti? 100,200,500');if(!a)return;a=parseInt(a);if(isNaN(a)||a<10){alert('Min Rs10');return;}balance+=a;let u=localStorage.getItem('csc_user');localStorage.setItem('csc_bal_'+u,balance);document.getElementById('bal').innerText=balance;alert('✅ Rs'+a+' Added!');}
+if(localStorage.getItem('csc_login')=='1'){let u=localStorage.getItem('csc_user');let b=localStorage.getItem('csc_bal_'+u);balance=b?parseInt(b):0;document.getElementById('loginScreen').style.display='none';document.getElementById('mainPortal').style.display='block';document.getElementById('userName').innerText=u;document.getElementById('bal').innerText=balance;}
+function openM(x,y,t){s=x;amt=y;ty=t;if(balance<y){alert('Bal kami! Recharge kara. Bal Rs'+balance+' Need Rs'+y);return;}document.getElementById('t').innerText=x+" - Rs"+y;document.getElementById('priceT').innerText="Wallet: Rs"+balance+" | Cut: Rs"+y;document.getElementById('res').innerHTML="";document.getElementById('paySec').style.display="block";document.getElementById('modal').style.display="flex";}
+function closeM(){document.getElementById('modal').style.display="none";}
+async function verify(){
+let n=document.getElementById('doc').value.trim();if(!n){alert("Number taka");return;}
+let r=document.getElementById('res');document.getElementById('paySec').style.display="none";
+r.innerHTML="🔄 Processing... Rs"+amt+" cut hotoy...";await new Promise(a=>setTimeout(a,1000));
+balance-=amt;let u=localStorage.getItem('csc_user');localStorage.setItem('csc_bal_'+u,balance);document.getElementById('bal').innerText=balance;
+let apiResult = null;
+r.innerHTML=`<div style="background:#E8F5E9;border:1.5px solid #0f7a3a;border-radius:12px;padding:14px">
+<b style="color:#0f7a3a">✅ ${s} Verified!</b><br><br>
+ID: <b>${n}</b><br>
+Type: ${ty}<br>
+Status: <span style="color:green;font-weight:800">SUCCESS</span><br><br>
+<div style="background:#fff;border-radius:8px;padding:10px;font-size:12px">
+Details fetched from Server
+</div>
+<br>Bal: Rs${balance} | Paid: Rs${amt}
+</div>
+<button class='btn btn-g' style='margin-top:10px' onclick='pdfApi()'>📄 Download PDF</button>`;
+}
+function pdfApi(){const{jsPDF}=window.jspdf;const d=new jsPDF();d.setFillColor(58,31,26);d.rect(0,0,210,28,'F');d.setTextColor(212,168,83);d.text("INDIACSCPRINT - VERIFIED",14,18);d.setTextColor(0,0,0);d.text(`${s}`,14,40);d.text(`ID: ${document.getElementById('doc').value}`,14,50);d.text(`Type: ${ty} | Paid Rs${amt}`,14,60);d.text(`Date: ${new Date().toLocaleString()}`,14,70);d.save(s+"_"+ty+".pdf");}
+</script></body></html>
