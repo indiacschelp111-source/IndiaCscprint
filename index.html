@@ -110,5 +110,9 @@ function closeM(){modal.style.display="none";}
 async function verify(){let n=doc.value.trim();if(!n){alert("Number taka");return;}res.innerHTML="🔄 Processing...";await new Promise(a=>setTimeout(a,1000));balance-=amt;let u=localStorage.getItem('csc_user');localStorage.setItem('csc_bal_'+u,balance);bal.innerText=balance;res.innerHTML=`<div style="background:#E8F5E9;padding:14px"><b>✅ ${s} Verified!</b><br>ID: ${n}<br>Bal: Rs${balance}</div><button class='btn btn-g' onclick='pdfApi()'>📄 PDF Download</button>`;}
 function pdfApi(){const{jsPDF}=window.jspdf;const d=new jsPDF();d.text("INDIACSCPRINT - VERIFIED",14,18);d.text(s,14,40);d.text("ID: "+doc.value,14,50);d.save(s+".pdf");}
 </script>
-</body>
+<div style="text-align:center;padding:15px 10px;margin-top:20px;border-top:1px solid #E9D5A3;font-size:12px;color:#6B4E3D;background:#FFF8F0;border-radius:12px">
+<b>Need help? Contact us:</b><br>
+📞 9604657792 • ✉️ support@indiacscprint.in<br>
+<div style="margin-top:6px">© 2026 INDIACSCPRINT • Terms • Privacy • Secure by CSC</div>
+</div></body>
 </html>
