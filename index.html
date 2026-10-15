@@ -1,51 +1,45 @@
-Ha co<!DOCTYPE html>
+<!DOCTYPE html>
 <html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>INDIACSCPRINT</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,sans-serif}
-body{background:#FFFBF0;max-width:480px;margin:auto;min-height:100vh}
-.h{background:#3A1F1A;padding:14px;text-align:center;color:#D4A853;font-weight:800;position:sticky;top:0;z-index:10;font-size:18px;letter-spacing:1px}
-.sec{margin:12px;background:#fff;border:1.5px solid #E9D5A3;border-radius:14px;padding:12px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
-.sec-t{font-weight:800;font-size:14px;margin-bottom:10px;display:flex;align-items:center;gap:6px}
-.g{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.c{background:linear-gradient(135deg,#FFFBF0,#FFF3CD);border:1.5px solid #E9D5A3;border-radius:14px;padding:16px 4px;text-align:center;cursor:pointer;transition:.15s}
-.c:active{transform:scale(0.96)}
-.c .ic{font-size:22px;display:block;margin-bottom:4px}
-.c .nm{font-size:14px;font-weight:600;color:#3A1F1A;line-height:1.2}
-.c .pr{font-size:14px;font-weight:900;color:#111;margin-top:2px}
-.m{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:99;justify-content:center;align-items:center;padding:12px}
-.bx{background:#fff;width:100%;max-width:390px;border-radius:20px;padding:18px}
-.in{width:100%;padding:13px;border:1.5px solid #E7C97D;border-radius:12px;margin-bottom:10px;font-size:14px}
-.btn{width:100%;background:#3A1F1A;color:#D4A853;padding:14px;border:none;border-radius:12px;font-weight:800;cursor:pointer;font-size:14px}
-.btn-g{background:#0f7a3a;color:#fff}
-.wallet{background:linear-gradient(135deg,#3A1F1A,#5a3a32);color:#D4A853;border-radius:16px;padding:14px 16px;margin:12px;display:flex;justify-content:space-between;align-items:center}
-.login-wrap{padding:20px;min-height:80vh;display:flex;flex-direction:column;justify-content:center}
-.login-box{background:#fff;border:2px solid #E9D5A3;border-radius:20px;padding:22px}
-.tab{display:flex;gap:8px;margin:16px 0}
-.tab-btn{flex:1;padding:12px;border-radius:12px;border:1.5px solid #E9D5A3;background:#FFFBF0;font-weight:800;cursor:pointer}
-.tab-btn.active{background:#3A1F1A;color:#D4A853;border-color:#3A1F1A}
-.admin-table{width:100%;font-size:12px;border-collapse:collapse;margin-top:8px}
-.admin-table td,.admin-table th{border:1px solid #E9D5A3;padding:8px;text-align:center;background:#FFFBF0}
-.admin-table th{background:#3A1F1A;color:#D4A853}
-</style>
+<style>*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}body{background:#FFFBF0;max-width:480px;margin:auto;min-height:100vh}.h{background:#3A1F1A;padding:14px;text-align:center;color:#D4A853;font-weight:800;position:sticky;top:0;z-index:10}.sec{margin:12px;background:#fff;border:1.5px solid #E9D5A3;border-radius:14px;padding:12px}.sec-t{font-weight:800;font-size:14px;margin-bottom:10px}.g{display:grid;grid-template-columns:1fr 1fr;gap:10px}.c{background:linear-gradient(135deg,#FFFBF0,#FFF3CD);border:1.5px solid #E9D5A3;border-radius:14px;padding:16px 4px;text-align:center;cursor:pointer}.m{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:99;justify-content:center;align-items:center;padding:12px}.bx{background:#fff;width:100%;max-width:390px;border-radius:20px;padding:18px}.in{width:100%;padding:13px;border:1.5px solid #E7C97D;border-radius:12px;margin-bottom:10px}.btn{width:100%;background:#3A1F1A;color:#D4A853;padding:14px;border:none;border-radius:12px;font-weight:800;cursor:pointer}.btn-g{background:#0f7a3a;color:#fff}.wallet{background:linear-gradient(135deg,#3A1F1A,#5a3a32);color:#D4A853;border-radius:14px;padding:14px;margin:12px;display:flex;justify-content:space-between;align-items:center}.login-wrap{padding:20px;min-height:80vh;display:flex;flex-direction:column;justify-content:center}.login-box{background:#fff;border:2px solid #E9D5A3;border-radius:20px;padding:22px}.tab{display:flex;gap:8px;margin:16px 0}.tab-btn{flex:1;padding:12px;border-radius:12px;border:1.5px solid #E9D5A3;background:#FFFBF0;font-weight:800;cursor:pointer}.tab-btn.active{background:#3A1F1A;color:#D4A853}.admin-table{width:100%;font-size:11px;border-collapse:collapse;margin-top:10px}.admin-table td,.admin-table th{border:1px solid #ddd;padding:6px;text-align:center}</style>
 </head><body>
 <div class="h">INDIACSCPRINT</div>
 <div id="loginScreen"><div class="login-wrap"><div class="login-box"><div style="width:60px;height:60px;background:#3A1F1A;border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;color:#D4A853;font-size:28px;font-weight:900">🖨️</div><h2 style="text-align:center;font-weight:900;color:#3A1F1A">ALL SERVICES</h2><p style="text-align:center;font-size:11px;color:#8a6d3b;margin-top:4px">Instant Print - Verified</p><div class="tab"><button id="tabLogin" class="tab-btn active" onclick="showTab('login')">Login</button><button id="tabReg" class="tab-btn" onclick="showTab('reg')">Register</button></div><div id="loginForm"><input id="lMobile" class="in" placeholder="📱 Mobile" maxlength="10"><input id="lPass" class="in" type="password" placeholder="🔒 Password"><button class="btn" onclick="doLogin()">🔓 Login</button></div><div id="regForm" style="display:none"><input id="rName" class="in" placeholder="👤 Name"><input id="rMobile" class="in" placeholder="📱 Mobile" maxlength="10"><input id="rShop" class="in" placeholder="🏪 Shop"><input id="rPass" class="in" type="password" placeholder="🔒 Password"><button class="btn btn-g" onclick="doReg()">✅ Create Account</button></div></div></div></div>
 <div id="mainPortal" style="display:none">
-<div class="wallet"><div><div style="font-size:11px;opacity:.8">Wallet</div><div style="font-size:22px;font-weight:900">₹<span id="bal">0</span></div><div style="font-size:11px" id="userName">Welcome</div></div><div style="display:flex;gap:8px;align-items:center"><button style="background:#D4A853;color:#3A1F1A;font-weight:800;padding:10px 14px;border-radius:20px;border:none;cursor:pointer" onclick="recharge()">+ Recharge</button><button style="color:#fff;font-size:12px;background:rgba(255,255,255,.25);padding:8px 12px;border-radius:20px;border:none;cursor:pointer" onclick="doLogout()">Logout</button></div></div>
-<div id="adminPanel" style="display:none" class="sec"><div class="sec-t" style="color:#c00">👑 ADMIN - 9604657792</div><div id="allUsersList"></div></div>
+<div class="wallet"><div><div style="font-size:11px">Wallet</div><div style="font-size:20px;font-weight:900">₹<span id="bal">0</span></div><div style="font-size:11px" id="userName"></div></div><div style="display:flex;gap:8px"><button style="background:#D4A853;color:#3A1F1A;font-weight:800;padding:8px 12px;border-radius:20px;border:none" onclick="recharge()">+ Recharge</button><button style="color:#fff;background:rgba(255,255,255,.2);padding:6px 12px;border-radius:20px;border:none" onclick="doLogout()">Logout</button></div></div>
+<div id="adminPanel" style="display:none" class="sec"><div class="sec-t" style="color:red">👑 ADMIN - 9604657792</div><div id="allUsersList"></div></div>
 <div class="sec"><div class="sec-t">✅ Services - Instant (15)</div><div class="g">
-<div class="c" onclick="openM('PAN Verify',20,'PAN')"><span class="ic">💳</span><span class="nm">PAN Verify</span><div class="pr">Rs20</div></div>
-<div class="c" onclick="openM('PAN to Aadhaar',20,'PAN_AADHAAR')"><span class="ic">🔗</span><span class="nm">PAN-Aadhaar</span><div class="pr">Rs20</div></div>
-<div class="c" onclick="openM('PAN to GST',20,'GST')"><span class="ic">🏢</span><span class="nm">PAN to GST</span><div class="pr">Rs20</div></div>
-<div class="c" onclick="openM('Voter Original Photo',20,'VOTER')"><span class="ic">🗳️</span><span class="nm">Voter Photo</span><div class="pr">Rs20</div></div>
-<div class="c" onclick="openM('RC Print',30,'RC')"><span class="ic">🚗</span><span class="nm">RC Print</span><div class="pr">Rs30</div></div>
-<div class="c" onclick="openM('DL Verify',30,'DL')"><span class="ic">🚙</span><span class="nm">DL Verify</span><div class="pr">Rs30</div></div>
-<div class="c" onclick="openM('e-Challan',20,'CHALLAN')"><span class="ic">🧾</span><span class="nm">e-Challan</span><div class="pr">Rs20</div></div>
-<div class="c" onclick="openM('GST Verify',20,'GST_VERIFY')"><span class="ic">🏦</span><span class="nm">GST Verify</span><div class="pr">Rs20</div></div>
-<div class="c" onclick="openM('Mobile to UPI',15,'UPI')"><span class="ic">📱</span><span class="nm">UPI Find</span><div class="pr">Rs15</div></div>
-<div class="c" onclick="openM('Aadhaar to UAN',20,'UAN')"><span class="ic">💼</span><span class="nm">UAN Find</span><div class="pr">Rs20</div></div>
-<div class="c" onclick="openM('ABHA Card',20,'ABHA')"><span class="ic">🏥</span><span class="nm">ABHA Card</span><div class="pr">Rs20</div></div>
-<div class="c" onclick="openM('Ration Card',20,'RATION')"><span class="ic">🌾</span><span class="nm">Ration Print</span><div class="pr">Rs20</div></div>
-<div class="c" onclick="openM('Electricity Bill',15,'BILL')"><span class="ic">💡</span><span class="
+<div class="c" onclick="openM('PAN Verify',20,'PAN')">🪪<br>PAN Verify<br><b>Rs20</b></div>
+<div class="c" onclick="openM('PAN to Aadhaar',20,'PAN_AADHAAR')">🔗<br>PAN-Aadhaar<br><b>Rs20</b></div>
+<div class="c" onclick="openM('PAN to GST',20,'GST')">🏢<br>PAN to GST<br><b>Rs20</b></div>
+<div class="c" onclick="openM('Voter Photo',20,'VOTER')">🗳️<br>Voter Photo<br><b>Rs20</b></div>
+<div class="c" onclick="openM('RC Print',30,'RC')">🚗<br>RC Print<br><b>Rs30</b></div>
+<div class="c" onclick="openM('DL Verify',30,'DL')">🚙<br>DL Verify<br><b>Rs30</b></div>
+<div class="c" onclick="openM('e-Challan',20,'CHALLAN')">🧾<br>e-Challan<br><b>Rs20</b></div>
+<div class="c" onclick="openM('GST Verify',20,'GST_VERIFY')">🏦<br>GST Verify<br><b>Rs20</b></div>
+<div class="c" onclick="openM('Mobile to UPI',15,'UPI')">📱<br>UPI Find<br><b>Rs15</b></div>
+<div class="c" onclick="openM('Aadhaar to UAN',20,'UAN')">💼<br>UAN Find<br><b>Rs20</b></div>
+<div class="c" onclick="openM('ABHA Card',20,'ABHA')">🏥<br>ABHA Card<br><b>Rs20</b></div>
+<div class="c" onclick="openM('Ration Card',20,'RATION')">🌾<br>Ration Print<br><b>Rs20</b></div>
+<div class="c" onclick="openM('Electricity Bill',15,'BILL')">💡<br>Light Bill<br><b>Rs15</b></div>
+<div class="c" onclick="openM('Insurance Check',20,'INSURANCE')">🛡️<br>Insurance<br><b>Rs20</b></div>
+<div class="c" onclick="openM('PM Kisan',15,'PMKISAN')">👨‍🌾<br>PM Kisan<br><b>Rs15</b></div>
+</div></div></div>
+<div id="modal" class="m"><div class="bx"><h3 id="t"></h3><br><input id="doc" class="in" placeholder="Number / ID taka"><div id="paySec"><p id="priceT" style="font-weight:800;color:#0f7a3a;text-align:center;margin-bottom:10px"></p><button class="btn btn-g" onclick="verify()">✅ Verify - Wallet Cut</button></div><div id="res"></div><button style="width:100%;background:#eee;border:none;padding:10px;border-radius:12px;margin-top:10px" onclick="closeM()">Close</button></div></div>
+<script>
+let s="",amt=0,ty="",balance=0;const ADMIN_MOBILE="9604657792";
+const API_CONFIG={baseUrl:"https://api.1pointapi.xyz",key:"YOUR_API_KEY_HERE"};
+function showTab(t){if(t=='login'){loginForm.style.display='block';regForm.style.display='none';tabLogin.classList.add('active');tabReg.classList.remove('active');}else{loginForm.style.display='none';regForm.style.display='block';tabLogin.classList.remove('active');tabReg.classList.add('active');}}
+function doLogin(){let m=lMobile.value,p=lPass.value;if(m.length!=10||!p){alert('Mobile/Password taka');return;}let b=localStorage.getItem('csc_bal_'+m);balance=b?parseInt(b):0;if(!b&&m===ADMIN_MOBILE)balance=480;localStorage.setItem('csc_user',m);localStorage.setItem('csc_login','1');localStorage.setItem('csc_bal_'+m,balance);loginScreen.style.display='none';mainPortal.style.display='block';userName.innerText=m;bal.innerText=balance;if(m===ADMIN_MOBILE){adminPanel.style.display='block';loadAllUsers();}}
+function doReg(){let n=rName.value,m=rMobile.value,sh=rShop.value,p=rPass.value;if(!n||m.length<10||!sh||!p){alert('Full bhara');return;}localStorage.setItem('csc_bal_'+m,'0');localStorage.setItem('csc_data_'+m,JSON.stringify({name:n,shop:sh}));localStorage.setItem('csc_user',m);localStorage.setItem('csc_login','1');balance=0;loginScreen.style.display='none';mainPortal.style.display='block';userName.innerText=m;bal.innerText=0;if(m===ADMIN_MOBILE){adminPanel.style.display='block';loadAllUsers();}alert('✅ Account Created');}
+function doLogout(){localStorage.removeItem('csc_login');loginScreen.style.display='block';mainPortal.style.display='none';}
+function loadAllUsers(){let h='<table class="admin-table"><tr><th>Mobile</th><th>Name</th><th>Bal</th><th>Add</th></tr>';for(let i=0;i<localStorage.length;i++){let k=localStorage.key(i);if(k.startsWith('csc_bal_')){let mob=k.replace('csc_bal_','');let b=localStorage.getItem(k);let d=localStorage.getItem('csc_data_'+mob);let nm=d?JSON.parse(d).name:'-';h+=`<tr><td>${mob}</td><td>${nm}</td><td>Rs${b}</td><td><button onclick="addBal('${mob}')">+100</button></td></tr>`;}}h+='</table>';allUsersList.innerHTML=h;}
+function addBal(mob){let b=parseInt(localStorage.getItem('csc_bal_'+mob)||'0');b+=100;localStorage.setItem('csc_bal_'+mob,b);alert(mob+' la Rs100 add');loadAllUsers();if(localStorage.getItem('csc_user')==mob)bal.innerText=b;}
+function recharge(){let a=prompt('UPI: 9604657792@ybl - Kiti bharayche? 100/200/500');if(!a)return;alert('Request Admin la gela - WhatsApp la screenshot pathva');}
+if(localStorage.getItem('csc_login')=='1'){let u=localStorage.getItem('csc_user');let b=localStorage.getItem('csc_bal_'+u);balance=b?parseInt(b):0;loginScreen.style.display='none';mainPortal.style.display='block';userName.innerText=u;bal.innerText=balance;if(u===ADMIN_MOBILE){adminPanel.style.display='block';loadAllUsers();}}
+function openM(x,y,t){s=x;amt=y;ty=t;if(balance<y){alert('Balance kami! Bal Rs'+balance+' Need Rs'+y);return;}tEl=document.getElementById('t');tEl.innerText=x+" - Rs"+y;priceT.innerText="Wallet Rs"+balance+" | Cut Rs"+y;res.innerHTML="";paySec.style.display="block";modal.style.display="flex";}
+function closeM(){modal.style.display="none";}
+async function verify(){let n=doc.value.trim();if(!n){alert("Number taka");return;}let r=res;paySec.style.display="none";r.innerHTML="🔄 Processing...";await new Promise(a=>setTimeout(a,1000));balance-=amt;let u=localStorage.getItem('csc_user');localStorage.setItem('csc_bal_'+u,balance);bal.innerText=balance;r.innerHTML=`<div style="background:#E8F5E9;border:1.5px solid #0f7a3a;border-radius:12px;padding:14px"><b>✅ ${s} Verified!</b><br><br>ID: ${n}<br>Type: ${ty}<br>Bal: Rs${balance} | Paid Rs${amt}</div><button class='btn btn-g' style='margin-top:10px' onclick='pdfApi()'>📄 PDF Download</button>`;}
+function pdfApi(){const{jsPDF}=window.jspdf;const d=new jsPDF();d.setFillColor(58,31,26);d.rect(0,0,210,28,'F');d.setTextColor(212,168,83);d.text("INDIACSCPRINT - VERIFIED",14,18);d.setTextColor(0,0,0);d.text(s,14,40);d.text("ID: "+doc.value,14,50);d.text("Type: "+ty+" Paid Rs"+amt,14,60);d.text(new Date().toLocaleString(),14,70);d.save(s+".pdf");}
+</script></body></html>
