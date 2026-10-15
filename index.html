@@ -95,7 +95,14 @@ function doReg(){let n=rName.value,m=rMobile.value;localStorage.setItem('csc_bal
 function doLogout(){localStorage.removeItem('csc_login');loginScreen.style.display='block';mainPortal.style.display='none';}
 function loadAllUsers(){let h='<table class="admin-table"><tr><th>Mobile</th><th>Bal</th><th>Add</th></tr>';for(let i=0;i<localStorage.length;i++){let k=localStorage.key(i);if(k.startsWith('csc_bal_')){let mob=k.replace('csc_bal_','');let b=localStorage.getItem(k);h+=`<tr><td>${mob}</td><td>Rs${b}</td><td><button onclick="addBal('${mob}')">+100</button></td></tr>`;}}h+='</table>';allUsersList.innerHTML=h;}
 function addBal(mob){let b=parseInt(localStorage.getItem('csc_bal_'+mob)||'0');b+=100;localStorage.setItem('csc_bal_'+mob,b);alert(mob+' la Rs100 add');loadAllUsers();if(localStorage.getItem('csc_user')==mob)bal.innerText=b;}
-function recharge(){prompt('UPI: 9604657792@ybl - Kiti?');alert('Request Admin la gela');}
+function recharge(){
+ let amt=prompt('Kiti Recharge karaycha? 100 / 200 / 500 taka');
+ if(!amt) return;
+ let upi="9604657792@ybl";
+ let qr="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=upi://pay?pa="+upi+"%26pn=INDIACSCPRINT%26am="+amt+"%26cu=INR";
+ let w=window.open("","_blank","width=380,height=550");
+ w.document.write("<center style='font-family:sans-serif'><h2 style='color:#3A1F1A'>INDIACSCPRINT</h2><h3>Rs"+amt+" Recharge</h3><img src='"+qr+"' style='border:2px solid #E9D5A3;border-radius:14px'><p><b>UPI ID:</b> "+upi+"</p><p>Pay karun screenshot <br>WhatsApp la pathva 👇</p><a href='https://wa.me/919604657792?text=Hi%20Rs"+amt+"%20Recharge%20kela%20ahe%20-%20ID:%20"+localStorage.getItem('csc_user')+"' style='background:#25D366;color:#fff;padding:12px 20px;border-radius:20px;text-decoration:none;font-weight:800;display:inline-block;margin-top:10px'>WhatsApp la Pathva</a></center>");
+}
 if(localStorage.getItem('csc_login')=='1'){let u=localStorage.getItem('csc_user');let b=localStorage.getItem('csc_bal_'+u);balance=b?parseInt(b):0;loginScreen.style.display='none';mainPortal.style.display='block';userName.innerText=u;bal.innerText=balance;if(u===ADMIN_MOBILE){adminPanel.style.display='block';loadAllUsers();}}
 function openM(x,y,t){s=x;amt=y;ty=t;if(balance<y){alert('Balance kami!');return;}document.getElementById('t').innerText=x+" - Rs"+y;modal.style.display="flex";}
 function closeM(){modal.style.display="none";}
