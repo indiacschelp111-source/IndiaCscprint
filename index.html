@@ -139,7 +139,7 @@ async function verify(){
   localStorage.setItem('csc_bal_'+u,balance);
   bal.innerText=balance;
   res.innerHTML=`<div style="background:#E8F5E9;padding:14px;border-radius:12px"><b>✅ ${s} Verified!</b><br>ID: ${n}<br>Bal: Rs${balance}<br><b style='color:#0f7a3a'>⬇️ PDF Auto Download hotoy...</b></div>`;
-  setTimeout(()=>{ autoPdfDownload(n,s); }, 1000);
+  autoPdfDownload(n,s);
 }
 function autoPdfDownload(id, serviceName){
   const {jsPDF}=window.jspdf;
