@@ -127,6 +127,14 @@ function recharge(){
  w.document.write("<center style='font-family:sans-serif'><h2 style='color:#3A1F1A'>INDIACSCPRINT</h2><h3>Rs"+amt+" Recharge</h3><img src='"+qr+"' style='border:2px solid #E9D5A3;border-radius:14px'><p><b>UPI ID:</b> "+upi+"</p><p>Pay karun screenshot <br>WhatsApp la pathva 👇</p><a href='https://wa.me/919604657792?text=Hi%20Rs"+amt+"%20Recharge%20kela%20ahe%20-%20ID:%20"+localStorage.getItem('csc_user')+"' style='background:#25D366;color:#fff;padding:12px 20px;border-radius:20px;text-decoration:none;font-weight:800;display:inline-block;margin-top:10px'>WhatsApp la Pathva</a></center>");
 }
 if(localStorage.getItem('csc_login')=='1'){let u=localStorage.getItem('csc_user');let b=localStorage.getItem('csc_bal_'+u);balance=b?parseInt(b):0;loginScreen.style.display='none';mainPortal.style.display='block';userName.innerText=u;bal.innerText=balance;if(u===ADMIN_MOBILE){adminPanel.style.display='block';loadAllUsers();}}
+function handlePopular(name, price, type){
+  if(localStorage.getItem('csc_login') !== '1'){
+    alert('🔒 Krupaya Login Kara! He service vaprayla login karava lagel.');
+    window.scrollTo({top:0, behavior:'smooth'});
+    return;
+  }
+  openM(name, price, type);
+}
 function openM(x,y,t){s=x;amt=y;ty=t;if(balance<y){alert('Balance kami!');return;}document.getElementById('t').innerText=x+" - Rs"+y;modal.style.display="flex";}
 function closeM(){modal.style.display="none";}
 async function verify(){
