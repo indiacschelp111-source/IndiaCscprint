@@ -136,11 +136,29 @@ function handlePopular(name, price, type){
   }
   openM(name, price, type);
 }
-function openM(x,y,t){s=x;amt=y;ty=t;if(balance<y){alert('Balance kami!');return;}document.getElementById('t').innerText=x+" - Rs"+y;modal.style.display="flex";}
+function openM(x,y,t){s=x;amt=y;ty=t;document.getElementById('t').innerText=x+" - Rs"+y;let pt=document.getElementById('priceT');if(pt)pt.innerText="Charge: Rs"+y+" | Wallet Bal: Rs"+balance;modal.style.display="flex";doc.value="";res.innerHTML="";}
 function closeM(){modal.style.display="none";}
+
+function payDirect(){
+  let n=doc.value.trim();
+  if(!n){alert("Adhi Number / ID taka");return;}
+  let upi="9604657792@ybl";
+  let am=amt;
+  let qr="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=upi://pay?pa="+upi+"%26pn=INDIACSCPRINT%26am="+am+"%26cu=INR";
+  let w=window.open("","_blank","width=400,height=600");
+  w.document.write("<center style='font-family:sans-serif;padding:14px'><h2 style='color:#3A1F1A'>INDIACSCPRINT</h2><h3>Direct Pay - Rs"+am+"</h3><p>Service: "+s+"</p><img src='"+qr+"' style='border:2px solid #E9D5A3;border-radius:14px'><p style='margin-top:10px'><b>UPI ID:</b> "+upi+"</p><p>Pay kelyavar khalche button daba</p><button onclick='window.opener.confirmDirectPay();window.close();' style='background:#0f7a3a;color:#fff;padding:14px 22px;border:none;border-radius:12px;font-weight:800;font-size:16px;margin-top:12px;cursor:pointer'>✅ I Paid Rs"+am+" - Download PDF</button><br><a href='https://wa.me/919604657792?text=Hi%20Rs"+am+"%20Direct%20Pay%20kela%20-%20"+s+"%20ID:%20"+n+"' style='background:#25D366;color:#fff;padding:10px 18px;border-radius:20px;text-decoration:none;font-weight:700;display:inline-block;margin-top:8px'>WhatsApp Proof</a></center>");
+}
+
+function confirmDirectPay(){
+  let n=doc.value.trim();
+  res.innerHTML=`<div style="background:#E8F5E9;padding:14px;border-radius:12px"><b>✅ ${s} Direct Payment Verified!</b><br>ID: ${n}<br>Amount Paid: Rs${amt}<br><b style='color:#0f7a3a'>⬇️ PDF Auto Download hotoy...</b></div>`;
+  autoPdfDownload(n,s+"-DirectPay");
+}
+
 async function verify(){
   let n=doc.value.trim();
   if(!n){alert("Number taka");return;}
+  if(balance<amt){alert("Balance kami! Khali Direct Pay button vapra - Wallet recharge nako.");return;}
   res.innerHTML="🔄 "+s+" Verify kartoy... ⏳";
   await new Promise(a=>setTimeout(a,800));
   balance-=amt;
@@ -150,6 +168,7 @@ async function verify(){
   res.innerHTML=`<div style="background:#E8F5E9;padding:14px;border-radius:12px"><b>✅ ${s} Verified!</b><br>ID: ${n}<br>Bal: Rs${balance}<br><b style='color:#0f7a3a'>⬇️ PDF Auto Download hotoy...</b></div>`;
   autoPdfDownload(n,s);
 }
+
 function autoPdfDownload(id, serviceName){
   const {jsPDF}=window.jspdf;
   const d=new jsPDF();
@@ -165,8 +184,7 @@ function autoPdfDownload(id, serviceName){
   res.innerHTML+=`<div style="margin-top:8px;color:#0f7a3a;font-weight:700">✅ PDF Downloaded!</div>`;
 }
 function pdfApi(){ autoPdfDownload(doc.value, s); }
-function pdfOriginal(){ autoPdfDownload(doc.value, s); }
-</script>
+function pdfOriginal(){ autoPdfDownload(doc.value, s); }</script>
 <div style="text-align:center;padding:15px 10px;margin-top:20px;border-top:1px solid #E9D5A3;font-size:12px;color:#6B4E3D;background:#FFF8F0;border-radius:12px">
 <b>Need help? Contact us:</b><br>
 📞 9604657792 • ✉️ support@indiacscprint.in<br>
