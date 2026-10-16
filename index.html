@@ -129,8 +129,34 @@ function recharge(){
 if(localStorage.getItem('csc_login')=='1'){let u=localStorage.getItem('csc_user');let b=localStorage.getItem('csc_bal_'+u);balance=b?parseInt(b):0;loginScreen.style.display='none';mainPortal.style.display='block';userName.innerText=u;bal.innerText=balance;if(u===ADMIN_MOBILE){adminPanel.style.display='block';loadAllUsers();}}
 function openM(x,y,t){s=x;amt=y;ty=t;if(balance<y){alert('Balance kami!');return;}document.getElementById('t').innerText=x+" - Rs"+y;modal.style.display="flex";}
 function closeM(){modal.style.display="none";}
-async function verify(){let n=doc.value.trim();if(!n){alert("Number taka");return;}res.innerHTML="🔄 Processing...";await new Promise(a=>setTimeout(a,1000));balance-=amt;let u=localStorage.getItem('csc_user');localStorage.setItem('csc_bal_'+u,balance);bal.innerText=balance;res.innerHTML=`<div style="background:#E8F5E9;padding:14px"><b>✅ ${s} Verified!</b><br>ID: ${n}<br>Bal: Rs${balance}</div><button class='btn btn-g' onclick='pdfApi()'>📄 PDF Download</button>`;}
-function pdfApi(){const{jsPDF}=window.jspdf;const d=new jsPDF();d.text("INDIACSCPRINT - VERIFIED",14,18);d.text(s,14,40);d.text("ID: "+doc.value,14,50);d.save(s+".pdf");}
+async function verify(){
+  let n=doc.value.trim();
+  if(!n){alert("Number taka");return;}
+  res.innerHTML="🔄 "+s+" Verify kartoy... ⏳";
+  await new Promise(a=>setTimeout(a,800));
+  balance-=amt;
+  let u=localStorage.getItem('csc_user');
+  localStorage.setItem('csc_bal_'+u,balance);
+  bal.innerText=balance;
+  res.innerHTML=`<div style="background:#E8F5E9;padding:14px;border-radius:12px"><b>✅ ${s} Verified!</b><br>ID: ${n}<br>Bal: Rs${balance}<br><b style='color:#0f7a3a'>⬇️ PDF Auto Download hotoy...</b></div>`;
+  setTimeout(()=>{ autoPdfDownload(n,s); }, 1000);
+}
+function autoPdfDownload(id, serviceName){
+  const {jsPDF}=window.jspdf;
+  const d=new jsPDF();
+  d.setFillColor(58,31,26); d.rect(0,0,210,26,'F');
+  d.setTextColor(212,168,83); d.setFontSize(16); d.text("INDIACSCPRINT",14,17);
+  d.setTextColor(0,0,0); d.setFontSize(12);
+  d.text("Service: "+serviceName,14,40);
+  d.text("ID: "+id,14,50);
+  d.text("Date: "+new Date().toLocaleString(),14,60);
+  d.text("Original Verified Copy",14,75);
+  d.setFontSize(9); d.text("© INDIACSCPRINT - 9604657792",14,285);
+  d.save(id+"_"+serviceName+"_Original.pdf");
+  res.innerHTML+=`<div style="margin-top:8px;color:#0f7a3a;font-weight:700">✅ PDF Downloaded!</div>`;
+}
+function pdfApi(){ autoPdfDownload(doc.value, s); }
+function pdfOriginal(){ autoPdfDownload(doc.value, s); }
 </script>
 <div style="text-align:center;padding:15px 10px;margin-top:20px;border-top:1px solid #E9D5A3;font-size:12px;color:#6B4E3D;background:#FFF8F0;border-radius:12px">
 <b>Need help? Contact us:</b><br>
